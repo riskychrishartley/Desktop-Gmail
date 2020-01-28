@@ -1,0 +1,29 @@
+{
+  "name": "Gmail-Desktop",
+  "productName": "Gmail Desktop",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "./",
+  "main": "src/electron.js",
+  "win": {
+    "icon": "./public/icon.png"
+  },
+  "scripts": {
+    "electron-start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -w"
+  },
+  "build": {
+    "files": [
+      "src/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "devDependencies": {
+    "electron": "^7.1.8",
+    "electron-builder": "^21.2.0"
+  }
+}

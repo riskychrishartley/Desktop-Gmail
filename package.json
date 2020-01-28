@@ -1,7 +1,7 @@
 {
   "name": "Gmail-Desktop",
   "productName": "Gmail Desktop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "homepage": "./",
   "main": "src/electron.js",
@@ -25,5 +25,8 @@
   "devDependencies": {
     "electron": "^7.1.8",
     "electron-builder": "^21.2.0"
+  },
+  "dependencies": {
+    "v8-compile-cache": "^2.1.0"
   }
 }

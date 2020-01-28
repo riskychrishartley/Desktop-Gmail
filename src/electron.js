@@ -3,10 +3,10 @@ require("v8-compile-cache");
 const {app, BrowserWindow, Tray, Menu} = require('electron');
 const path = require('path');
 
-// Keep a global reference of the window object, if you don't, the window will
+// Keep a global reference of the window object and tray item, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-
+let trayItem;
 
 // Returns false if there is already an instance running
 const firstInstance = app.requestSingleInstanceLock();
@@ -49,9 +49,8 @@ function createWindow () {
     mainWindow.removeMenu();
 
 
-    const trayItem = new Tray(path.join(__dirname, 'icon.png'));
+    trayItem = new Tray(path.join(__dirname, 'icon.png'));
     trayItem.on("click", () => mainWindow.show());
-
     const contextMenu = Menu.buildFromTemplate([
         {
             label: 'Show App', click: function () {

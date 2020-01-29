@@ -8,23 +8,6 @@ const path = require('path');
 let mainWindow;
 let trayItem;
 
-// Returns false if there is already an instance running
-const firstInstance = app.requestSingleInstanceLock();
-
-// Quit if process is a redundant instance
-if (!firstInstance) {
-    app.quit()
-}
-
-// Otherwise set an event handler which will render mainWindow, if it is not null
-else{
-    app.on('second-instance', (event, commandLine, workingDirectory) => {
-        if (mainWindow) {
-            mainWindow.show()
-        }
-    })
-}
-
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -32,6 +15,25 @@ app.on('ready', createWindow);
 
 
 function createWindow () {
+
+    // Returns false if there is already an instance running
+    const firstInstance = app.requestSingleInstanceLock();
+
+    // Quit if process is a redundant instance
+    if (!firstInstance) {
+        app.quit();
+        return null;
+    }
+
+    // Otherwise set an event handler which will render mainWindow, if it is not null
+    else{
+        app.on('second-instance', (event, commandLine, workingDirectory) => {
+            if (mainWindow) {
+                mainWindow.show()
+            }
+        })
+    }
+
     // Create the browser window.
     mainWindow = new BrowserWindow({
         width: 800,
@@ -40,7 +42,6 @@ function createWindow () {
             preload: path.join(__dirname, 'preload.js')
         }
     });
-
 
     // and load the index.html of the app.
     mainWindow.loadURL(`https://gmail.com`);

@@ -25,14 +25,11 @@ function createWindow () {
         return null;
     }
 
-    // Otherwise set an event handler which will render mainWindow, if it is not null
-    else{
-        app.on('second-instance', (event, commandLine, workingDirectory) => {
-            if (mainWindow) {
-                mainWindow.show()
-            }
-        })
-    }
+    app.on('second-instance', (event, commandLine, workingDirectory) => {
+        if (mainWindow) {
+            mainWindow.show()
+        }
+    });
 
     // Create the browser window.
     mainWindow = new BrowserWindow({

@@ -11,7 +11,7 @@ let gmail = `https://mail.google.com`;
 let googleauth = `https://accounts.google.com`;
 let apis = 'https://*.google.com';
 let gstatic = "https://*.gstatic.com";
-let userAgent = {userAgent: 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/72.0'};
+let userAgent = {userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.74 Safari/537.36 Edg/79.0.309.43'};
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.

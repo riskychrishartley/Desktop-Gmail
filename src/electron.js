@@ -50,15 +50,13 @@ function createWindow () {
 
     mainWindow.maximize();
     mainWindow.show();
-    //mainWindow.webContents.openDevTools();
-    // and load the index.html of the app.
-    mainWindow.loadURL(gmail, userAgent);
+    mainWindow.loadURL(gmail, userAgent).then(() => mainWindow.show());
 
 
     mainWindow.webContents.on('new-window', (e,url) => {
         e.preventDefault();
-        if(url.includes(googleauth) || url.includes(gmail)) mainWindow.loadURL(url, userAgent);
-        else contentWindow(url);
+        if(url.startsWith(googleauth) || url.startsWith(gmail)) mainWindow.loadURL(url, userAgent).then(() => mainWindow.show());
+        else contentWindow(url)
     });
 
 
@@ -105,7 +103,7 @@ function contentWindow(url){
     });
 
     newWindow.removeMenu();
-    newWindow.loadURL(url,  userAgent);
+    newWindow.loadURL(url, userAgent).then();
 
     newWindow.on('closed', function() {
         newWindow = null

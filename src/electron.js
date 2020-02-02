@@ -18,17 +18,6 @@ let userAgent = {userAgent: 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/
 app.on('ready', init);
 
 function init(){
-
-    // Define Content Security Policy before loading page
-    session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
-        callback({
-            responseHeaders: {
-                ...details.responseHeaders,
-                'Content-Security-Policy': [`script-src-elem 'unsafe-inline' 'self' ${apis} ${gstatic} `]
-            }
-        })
-    });
-
     createWindow();
 }
 
